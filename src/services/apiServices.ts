@@ -5,15 +5,9 @@ export const getGenderByName = async (name: string) => {
     const divideName = name.split(' ');
     name = divideName.join('+');
   }
-
-  return await fetch(`https://api.genderize.io/?name=${name}`, {
-    method: 'GET',
-    headers: {
-      'Content-type': 'application/json;charset=UTF-8',
-    },
-  })
-    .then(response => response.json())
-    .catch(err => console.log('Request failed', err));
+  return await axiosHelper(`https://api.genderize.io`, '')
+    .get(`/?name=${name}`)
+    .then(response => response.data);
 };
 
 export const getAgeByName = async (name: string) => {
@@ -40,7 +34,6 @@ export const getUniversityByCountry = async (countryName: string) => {
   }
 
   const url = `http://universities.hipolabs.com`;
-  console.log(url);
   return await axiosHelper(url, '')
     .get(`/search?country=${countryName}`)
     .then(response => response.data);

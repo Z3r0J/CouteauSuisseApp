@@ -1,6 +1,7 @@
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import React from 'react';
 import {useColorScheme} from 'react-native';
+import {GenderByNameComponent} from '../GenderByName/GenderByNameComponent';
 import {HomeComponent} from '../home/HomeComponent';
 import {UniversityComponent} from '../university/UniversityComponent';
 
@@ -16,6 +17,7 @@ export const NavigationDrawer = () => {
       }}>
       <Drawer.Screen name="Home" component={HomeComponent} />
       <Drawer.Screen name="University" component={UniversityComponent} />
+      <Drawer.Screen name="Gender" component={GenderByNameComponent} />
     </Drawer.Navigator>
   );
 };

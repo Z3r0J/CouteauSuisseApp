@@ -8,7 +8,11 @@
  * @format
  */
 
-import {NavigationContainer} from '@react-navigation/native';
+import {
+  NavigationContainer,
+  DefaultTheme,
+  DarkTheme,
+} from '@react-navigation/native';
 import React from 'react';
 import {useColorScheme} from 'react-native';
 import {NavigationDrawer} from './src/components/navigation/NavigationDrawer';
@@ -17,7 +21,7 @@ const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
   return (
-    <NavigationContainer>
+    <NavigationContainer theme={isDarkMode ? DarkTheme : DefaultTheme}>
       <NavigationDrawer />
     </NavigationContainer>
   );
