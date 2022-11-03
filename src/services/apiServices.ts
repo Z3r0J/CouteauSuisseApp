@@ -6,9 +6,14 @@ export const getGenderByName = async (name: string) => {
     name = divideName.join('+');
   }
 
-  return await axiosHelper('https://api.genderize.io', '')
-    .get(`/?name=${name}`)
-    .then(response => response.data);
+  return await fetch(`https://api.genderize.io/?name=${name}`, {
+    method: 'GET',
+    headers: {
+      'Content-type': 'application/json;charset=UTF-8',
+    },
+  })
+    .then(response => response.json())
+    .catch(err => console.log('Request failed', err));
 };
 
 export const getAgeByName = async (name: string) => {
@@ -17,9 +22,15 @@ export const getAgeByName = async (name: string) => {
     name = divideName.join('+');
   }
 
-  return await axiosHelper('https://api.agify.io', '')
-    .get(`/?name=${name}`)
-    .then(response => response.data);
+  return await fetch(`https://api.agify.io/?name=${name}`, {
+    method: 'GET',
+    headers: {
+      'Content-type': 'application/json;charset=UTF-8',
+    },
+  })
+    .then(response => response.json())
+    .then(json => console.log(json))
+    .catch(err => console.log('Request failed', err));
 };
 
 export const getUniversityByCountry = async (countryName: string) => {
@@ -28,16 +39,23 @@ export const getUniversityByCountry = async (countryName: string) => {
     countryName = divideName.join('+');
   }
 
-  return await axiosHelper('http://universities.hipolabs.com', '')
+  const url = `http://universities.hipolabs.com`;
+  console.log(url);
+  return await axiosHelper(url, '')
     .get(`/search?country=${countryName}`)
     .then(response => response.data);
 };
 
 export const getWeather = async () => {
-  return await axiosHelper(
-    'https://api.openweathermap.org/data/2.5',
-    'e83b3c4c08285bf87b99f9bbc0abe3f0',
+  return await fetch(
+    `http://api.openweathermap.org/weather?q=Santo+Domingo&appid=e83b3c4c08285bf87b99f9bbc0abe3f0&units=metric`,
+    {
+      method: 'GET',
+      headers: {
+        'Content-type': 'application/json;charset=UTF-8',
+      },
+    },
   )
-    .get(`/weather?q=Santo+Domingo`, {params: {units: 'metric'}})
-    .then(response => response.data);
+    .then(response => response.json())
+    .catch(err => console.log('Request failed', err));
 };

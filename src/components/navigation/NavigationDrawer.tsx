@@ -2,6 +2,7 @@ import {createDrawerNavigator} from '@react-navigation/drawer';
 import React from 'react';
 import {useColorScheme} from 'react-native';
 import {HomeComponent} from '../home/HomeComponent';
+import {UniversityComponent} from '../university/UniversityComponent';
 
 const Drawer = createDrawerNavigator();
 
@@ -14,6 +15,7 @@ export const NavigationDrawer = () => {
         headerTintColor: isDarkMode ? 'white' : 'black',
       }}>
       <Drawer.Screen name="Home" component={HomeComponent} />
+      <Drawer.Screen name="University" component={UniversityComponent} />
     </Drawer.Navigator>
   );
 };
