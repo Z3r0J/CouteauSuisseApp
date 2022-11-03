@@ -34,15 +34,10 @@ export const getUniversityByCountry = async (countryName: string) => {
 };
 
 export const getWeather = async () => {
-  return await fetch(
-    `http://api.openweathermap.org/weather?q=Santo+Domingo&appid=e83b3c4c08285bf87b99f9bbc0abe3f0&units=metric`,
-    {
-      method: 'GET',
-      headers: {
-        'Content-type': 'application/json;charset=UTF-8',
-      },
-    },
+  return await axiosHelper(
+    'https://api.openweathermap.org/data/2.5',
+    'e83b3c4c08285bf87b99f9bbc0abe3f0',
   )
-    .then(response => response.json())
-    .catch(err => console.log('Request failed', err));
+    .get('/weather?q=Santo+Domingo', {params: {units: 'metric'}})
+    .then(response => response.data);
 };

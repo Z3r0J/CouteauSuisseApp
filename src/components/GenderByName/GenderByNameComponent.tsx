@@ -36,6 +36,16 @@ export const GenderByNameComponent = () => {
 
   return (
     <View style={Styles(isDarkMode).viewStyle}>
+      <Text
+        style={{
+          fontSize: 16,
+          fontWeight: '900',
+          marginBottom: 2,
+          marginTop: 8,
+          color: isDarkMode ? 'white' : 'black',
+        }}>
+        Inserta un nombre:
+      </Text>
       <TextInput
         onChangeText={handleInput}
         style={Styles(isDarkMode).inputStyle}

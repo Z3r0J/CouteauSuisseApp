@@ -20,8 +20,25 @@ import {NavigationDrawer} from './src/components/navigation/NavigationDrawer';
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
+  const MyLightTheme = {
+    ...DefaultTheme,
+    colors: {
+      ...DefaultTheme.colors,
+      primary: 'rgb(239,109,0)',
+    },
+  };
+
+  const MyDarkTheme = {
+    ...DarkTheme,
+    colors: {
+      ...DarkTheme.colors,
+      primary: 'rgb(239,145,0)',
+      border: 'rgb(189,157,120)',
+    },
+  };
+
   return (
-    <NavigationContainer theme={isDarkMode ? DarkTheme : DefaultTheme}>
+    <NavigationContainer theme={isDarkMode ? MyDarkTheme : MyLightTheme}>
       <NavigationDrawer />
     </NavigationContainer>
   );

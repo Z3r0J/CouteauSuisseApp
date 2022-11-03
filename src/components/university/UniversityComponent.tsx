@@ -41,6 +41,16 @@ export const UniversityComponent = () => {
 
   return (
     <View style={Styles(isDarkMode).viewStyle}>
+      <Text
+        style={{
+          fontSize: 16,
+          fontWeight: '900',
+          marginBottom: 2,
+          marginTop: 8,
+          color: isDarkMode ? 'white' : 'black',
+        }}>
+        Inserta un pais (En ingles):
+      </Text>
       <TextInput
         onChangeText={handleInput}
         style={Styles(isDarkMode).inputStyle}
@@ -55,7 +65,13 @@ export const UniversityComponent = () => {
       )}
       {result && (
         <ScrollView>
-          <Text>
+          <Text
+            style={{
+              alignSelf: 'center',
+              fontSize: 14,
+              color: isDarkMode ? 'white' : 'black',
+              marginTop: 8,
+            }}>
             Todas las Universidades de {search} - {`(${result.length})`}
           </Text>
           {result.map((r, i) => {
