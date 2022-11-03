@@ -4,6 +4,7 @@ import Spinner from 'react-native-loading-spinner-overlay/lib';
 import useDebounce from '../../helpers/debounce';
 import {Styles} from '../../helpers/Styles';
 import {getGenderByName} from '../../services/apiServices';
+import IonIcon from 'react-native-vector-icons/Ionicons';
 
 export const GenderByNameComponent = () => {
   const [name, setName] = useState<string>('');
@@ -67,7 +68,14 @@ export const GenderByNameComponent = () => {
             padding: 5,
             marginBottom: 8,
             marginTop: 9,
+            display: 'flex',
+            justifyContent: 'space-around',
           }}>
+          <IonIcon
+            name={result.gender == 'male' ? 'male' : 'female'}
+            size={40}
+            color={'White'}
+          />
           <Text style={{fontSize: 20, color: 'white'}}>
             {result.name + ' - ' + result.gender}
           </Text>

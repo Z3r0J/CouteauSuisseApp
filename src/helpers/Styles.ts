@@ -59,4 +59,17 @@ export const Styles = (isDarkMode: boolean) =>
       marginBottom: 2,
       color: 'white',
     },
+    listStyle: {
+      marginTop: 20,
+      flexDirection: 'column',
+    },
+    item: {
+      fontFamily: 'Poppins-Regular',
+      fontSize: 16,
+      marginTop: 8,
+      borderBottomWidth: 1,
+      borderStyle: 'solid',
+      borderColor: isDarkMode ? 'rgb(239,145,0)' : 'rgb(239,109,0)',
+      color: isDarkMode ? 'white' : '#5A5D5C',
+    },
   });
