@@ -7,11 +7,7 @@ export const getGenderByName = async (name: string) => {
   }
 
   return await axiosHelper('https://api.genderize.io', '')
-    .get('/', {
-      params: {
-        name: name,
-      },
-    })
+    .get(`/?name=${name}`)
     .then(response => response.data);
 };
 
@@ -22,11 +18,7 @@ export const getAgeByName = async (name: string) => {
   }
 
   return await axiosHelper('https://api.agify.io', '')
-    .get('/', {
-      params: {
-        name: name,
-      },
-    })
+    .get(`/?name=${name}`)
     .then(response => response.data);
 };
 
@@ -37,10 +29,15 @@ export const getUniversityByCountry = async (countryName: string) => {
   }
 
   return await axiosHelper('http://universities.hipolabs.com', '')
-    .get('/search', {
-      params: {
-        country: countryName,
-      },
-    })
+    .get(`/search?country=${countryName}`)
+    .then(response => response.data);
+};
+
+export const getWeather = async () => {
+  return await axiosHelper(
+    'https://api.openweathermap.org/data/2.5',
+    'e83b3c4c08285bf87b99f9bbc0abe3f0',
+  )
+    .get(`/weather?q=Santo+Domingo`, {params: {units: 'metric'}})
     .then(response => response.data);
 };
