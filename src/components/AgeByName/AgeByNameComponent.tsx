@@ -1,11 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import {Text, TextInput, useColorScheme, View} from 'react-native';
-import Spinner from 'react-native-loading-spinner-overlay/lib';
+import {ScrollView, Text, TextInput, useColorScheme, View} from 'react-native';
 import useDebounce from '../../helpers/debounce';
 import {Styles} from '../../helpers/Styles';
-import {getGenderByName} from '../../services/apiServices';
+import {getAgeByName} from '../../services/apiServices';
 
-export const GenderByNameComponent = () => {
+export const AgeByNameComponent = () => {
   const [name, setName] = useState<string>('');
   const [result, setResult] = useState(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -22,7 +21,7 @@ export const GenderByNameComponent = () => {
   const genderByName = async (value: string) => {
     setResult(null);
     setIsLoading(true);
-    await getGenderByName(value).then(response => {
+    await getAgeByName(value).then(response => {
       setResult(response);
       setIsLoading(false);
     });
@@ -33,35 +32,20 @@ export const GenderByNameComponent = () => {
       genderByName(name);
     }
   }, [debouncedValue]);
-
   return (
     <View style={Styles(isDarkMode).viewStyle}>
       <TextInput
         onChangeText={handleInput}
         style={Styles(isDarkMode).inputStyle}
       />
-      {isLoading && (
-        <Spinner
-          animation="fade"
-          visible={isLoading}
-          textContent={'Cargando...'}
-          color="red"
-        />
-      )}
-
       {result && (
-        <View
-          style={{
-            marginEnd: 8,
-            backgroundColor: result?.gender == 'male' ? '#10D3EE' : '#EE108C',
-            padding: 5,
-            marginBottom: 8,
-            marginTop: 9,
-          }}>
-          <Text style={{fontSize: 20, color: 'white'}}>
-            {result.name + ' - ' + result.gender}
-          </Text>
-        </View>
+        <ScrollView style={Styles(isDarkMode).universityCard}>
+          <Text
+            style={{
+              fontSize: 20,
+              color: 'white',
+            }}>{`${result.name} - ${result.age}`}</Text>
+        </ScrollView>
       )}
     </View>
   );

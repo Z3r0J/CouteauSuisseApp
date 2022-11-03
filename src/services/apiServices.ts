@@ -16,15 +16,9 @@ export const getAgeByName = async (name: string) => {
     name = divideName.join('+');
   }
 
-  return await fetch(`https://api.agify.io/?name=${name}`, {
-    method: 'GET',
-    headers: {
-      'Content-type': 'application/json;charset=UTF-8',
-    },
-  })
-    .then(response => response.json())
-    .then(json => console.log(json))
-    .catch(err => console.log('Request failed', err));
+  return await axiosHelper(`https://api.agify.io`, '')
+    .get(`/?name=${name}`)
+    .then(response => response.data);
 };
 
 export const getUniversityByCountry = async (countryName: string) => {

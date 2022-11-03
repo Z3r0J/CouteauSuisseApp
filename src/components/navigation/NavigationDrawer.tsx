@@ -1,6 +1,7 @@
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import React from 'react';
 import {useColorScheme} from 'react-native';
+import {AgeByNameComponent} from '../AgeByName/AgeByNameComponent';
 import {GenderByNameComponent} from '../GenderByName/GenderByNameComponent';
 import {HomeComponent} from '../home/HomeComponent';
 import {UniversityComponent} from '../university/UniversityComponent';
@@ -16,8 +17,12 @@ export const NavigationDrawer = () => {
         headerTintColor: isDarkMode ? 'white' : 'black',
       }}>
       <Drawer.Screen name="Home" component={HomeComponent} />
-      <Drawer.Screen name="University" component={UniversityComponent} />
-      <Drawer.Screen name="Gender" component={GenderByNameComponent} />
+      <Drawer.Screen
+        name="UniversityByCountry"
+        component={UniversityComponent}
+      />
+      <Drawer.Screen name="GenderByName" component={GenderByNameComponent} />
+      <Drawer.Screen name="AgeByName" component={AgeByNameComponent} />
     </Drawer.Navigator>
   );
 };

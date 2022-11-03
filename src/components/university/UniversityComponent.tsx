@@ -55,6 +55,9 @@ export const UniversityComponent = () => {
       )}
       {result && (
         <ScrollView>
+          <Text>
+            Todas las Universidades de {search} - {`(${result.length})`}
+          </Text>
           {result.map((r, i) => {
             return (
               <View key={i} style={Styles(isDarkMode).universityCard}>
